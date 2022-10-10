@@ -11,7 +11,7 @@ function createGenericSlice(sliceName) {
         reducers: {
             setActiveUser: (state, action) => {
                 
-                    state['activeUser' + sliceName] = action.payload
+                state['activeUser' + sliceName] = action.payload
                 
             }
         },

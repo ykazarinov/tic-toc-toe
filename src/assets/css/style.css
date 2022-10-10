@@ -10798,22 +10798,30 @@ body {
 }
 
 .cell {
-  border-radius: 5px;
   width: 10rem;
   height: 10rem;
   background-color: white;
   margin: 0.5rem;
-  border-top: 5px solid white;
-  border-left: 5px solid white;
-  border-bottom: 5px solid rgb(210, 210, 210);
-  border-right: 5px solid rgb(210, 210, 210);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 3rem;
+}
+.cell .el-none {
+  display: none;
+}
+.cell .el-invisible {
+  display: none;
+}
+.cell:hover .el-invisible {
+  display: flex;
+  color: rgb(180, 180, 180);
 }
 .cell.pressed {
   background-color: rgb(210, 210, 210);
-  border-top: 5px solid rgb(180, 180, 180);
-  border-left: 5px solid rgb(180, 180, 180);
-  border-bottom: 5px solid rgb(210, 210, 210);
-  border-right: 5px solid rgb(210, 210, 210);
+  border: none;
+  pointer-events: none;
 }
 
 /*# sourceMappingURL=style.css.map */

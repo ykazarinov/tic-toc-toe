@@ -1,5 +1,6 @@
-import loadable from '@loadable/component';
 import { useSelector, useDispatch } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark, faO } from '@fortawesome/free-solid-svg-icons'
 import {    
     setPressed1, 
     setPressed2,
@@ -10,6 +11,15 @@ import {
     setPressed7,
     setPressed8,
     setPressed9,
+    setCellContent1,
+    setCellContent2,
+    setCellContent3,
+    setCellContent4,
+    setCellContent5,
+    setCellContent6,
+    setCellContent7,
+    setCellContent8,
+    setCellContent9,
 } from "../slices/cell.slice";
 import {    
     setActiveUser1, 
@@ -17,12 +27,29 @@ import {
 
 } from "../slices/user.slice";
 export default function Cell(props){
-    // const [pressed, setPressed] = useState(false);
     const dispatch = useDispatch();
     const  pressed  = useSelector((state) => state['cellReducer' + props.celNum])['pressed'+props.celNum]
+    const  cellContent  = useSelector((state) => state['cellReducer' + props.celNum])['cellContent'+props.celNum]
 
     const  activeUser1  = useSelector((state) => state['userReducer1'])['activeUser1']
     const  activeUser2  = useSelector((state) => state['userReducer2'])['activeUser2']
+
+    const setCellContent = ((cont)=>{ 
+        switch(props.celNum){
+            case 1: return setCellContent1(cont) 
+            case 2: return setCellContent2(cont) 
+            case 3: return setCellContent3(cont) 
+            case 4: return setCellContent4(cont)
+            case 5: return setCellContent5(cont) 
+            case 6: return setCellContent6(cont)
+            case 7: return setCellContent7(cont) 
+            case 8: return setCellContent8(cont)
+            case 9: return setCellContent9(cont)
+            default: return
+        }
+       
+    })
+
 
     const setPressed = (()=>{ 
         switch(props.celNum){
@@ -39,23 +66,45 @@ export default function Cell(props){
         }
     })
 
+
+
+   
     const cellClick = (()=>{
-        dispatch(setPressed())
+        
+        
         if(activeUser1){
+            dispatch(setPressed())
             dispatch(setActiveUser1(false))
             dispatch(setActiveUser2(true))
+            dispatch(setCellContent('X'))
+
+           
         }
         if(activeUser2){
+            dispatch(setPressed())
             dispatch(setActiveUser1(true))
             dispatch(setActiveUser2(false))
+            dispatch(setCellContent('O'))
+
+          
         }
 
     })
+
+
     return(
        
-            <div className={pressed ? 'cell pressed' : 'cell'}
-                onClick={cellClick}>
-
+            <div className={
+                pressed ? 'cell pressed' : 'cell'}
+                onClick={cellClick}
+                
+                >
+                    <FontAwesomeIcon icon={faXmark} className={activeUser1 ? 'el-invisible': 'el-none'} />
+                    <FontAwesomeIcon icon={faO} className={activeUser2 ? 'el-invisible': 'el-none'} />
+                    {
+                        cellContent === 'X' ? <FontAwesomeIcon icon={faXmark} /> : 
+                        cellContent === 'O' ? <FontAwesomeIcon icon={faO} /> :
+                        null}
             </div>
        
     )

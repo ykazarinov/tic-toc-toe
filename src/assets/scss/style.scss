@@ -31,21 +31,46 @@ $cell_size: 10rem;
   flex-wrap: wrap;
 }  
 .cell{
-  border-radius: 5px;
+
   width: $cell_size;
   height: $cell_size;
   background-color: white;
   margin: calc($cell_size * 0.05);
-  border-top: 5px solid white;
-  border-left: 5px solid white;
-  border-bottom: 5px solid $border_normal;
-  border-right: 5px solid $border_normal;
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 3rem;
+  // -webkit-transform: scale(1.2);
+  // -ms-transform: scale(1.2);
+  // transform: scale(1.2);
+  // &:hover::after{
+  //   content: '<i class="fa-regular fa-o"></i>';
+  // }
+  .el-none{
+    display: none;
+  }
+  .el-invisible{
+    display: none;
+   
+  }
+    &:hover{
+      .el-invisible{
+        display: flex;
+        color: $border_pressed;
+      }
+    }
+  
   &.pressed{
     background-color: $cell_bg_pressed;
-    border-top: 5px solid $border_pressed;
-    border-left: 5px solid $border_pressed;
-    border-bottom: 5px solid $border_normal;
-    border-right: 5px solid $border_normal;
+    // border-top: 5px solid $border_pressed;
+    // border-left: 5px solid $border_pressed;
+    // border-bottom: 5px solid $border_normal;
+    // border-right: 5px solid $border_normal;
+   
+    border: none;
+    pointer-events: none;
   }
 
 }
