@@ -1,0 +1,51 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+
+$bg_color: rgb(240, 240, 240);
+$border_normal: rgb(210, 210, 210);
+$cell_bg_pressed: rgb(210, 210, 210);
+$border_pressed: rgb(180, 180, 180);
+$cell_size: 10rem;
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+  html,
+  body {
+    height: 100%;
+    background-color: $bg_color;
+  }
+
+  #root{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+
+.cell_container{
+  width: calc((3 * $cell_size) + 6 * ($cell_size * 0.05));
+  display: flex;
+  flex-wrap: wrap;
+}  
+.cell{
+  border-radius: 5px;
+  width: $cell_size;
+  height: $cell_size;
+  background-color: white;
+  margin: calc($cell_size * 0.05);
+  border-top: 5px solid white;
+  border-left: 5px solid white;
+  border-bottom: 5px solid $border_normal;
+  border-right: 5px solid $border_normal;
+  &.pressed{
+    background-color: $cell_bg_pressed;
+    border-top: 5px solid $border_pressed;
+    border-left: 5px solid $border_pressed;
+    border-bottom: 5px solid $border_normal;
+    border-right: 5px solid $border_normal;
+  }
+
+}
